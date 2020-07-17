@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    {{ error }}
+    {% if action == 'new' %}
+    <form action="{% url action %}" method="POST">
+    {% elif action == 'edit' %}
+    <form action="{% url action title %}" method="POST">
+    {% endif %}
+        {{ form }}
+        {% csrf_token %}
+        <input type="submit">
+    </form>
+    {{ test }}
+{% endblock %}
